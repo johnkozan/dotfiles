@@ -7,3 +7,7 @@ Uses the [homesick rubygem](https://github.com/technicalpickles/homesick)
 ```bash
 homesick clone johnkozan/dotfiles
 ```
+
+## Contents
+
+- tmux.conf
