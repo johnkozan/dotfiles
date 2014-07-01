@@ -11,3 +11,4 @@ homesick clone johnkozan/dotfiles
 ## Contents
 
 - tmux.conf
+- .ssh/config
