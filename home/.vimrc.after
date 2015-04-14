@@ -1,0 +1,15 @@
+
+set backupcopy=yes
+
+" Make Vim to handle long lines nicely.
+set nowrap
+set textwidth=0
+" set formatoptions=qrn1
+" "set colorcolumn=79
+set relativenumber
+" set number
+" "set norelativenumber
+set t_Co=256
+color candycode
+
+au BufNewFile,BufRead *.es6 set filetype=javascript
