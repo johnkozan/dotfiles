@@ -12,4 +12,4 @@ homesick clone johnkozan/dotfiles
 
 - tmux.conf
 - .ssh/config
-- .vimrc.after
+- .vimrc

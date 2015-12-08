@@ -39,7 +39,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/syntastic'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'pangloss/vim-javascript'
-
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'danro/rename.vim'
+Plugin 'ethereum/vim-solidity'
 
 " Snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -118,6 +120,7 @@ set noswapfile
 "endif
 "
 au BufNewFile,BufRead *.es6 set filetype=javascript
+au BufNewFile,BufRead *.tmpl set filetype=html
 
 set backupcopy=yes
 
