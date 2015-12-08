@@ -125,7 +125,8 @@ au BufNewFile,BufRead *.tmpl set filetype=html
 set backupcopy=yes
 
 set t_Co=256
-colorscheme PaperColor-Dark
+set background=dark
+colorscheme PaperColor
 set laststatus=2
 let g:airline_theme='PaperColor'
 
