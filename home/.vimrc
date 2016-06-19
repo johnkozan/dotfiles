@@ -119,7 +119,7 @@ set noswapfile
 "set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 "endif
 "
-au BufNewFile,BufRead *.es6 set filetype=javascript
+au BufNewFile,BufRead *.es6,*.jsx set filetype=javascript
 au BufNewFile,BufRead *.tmpl set filetype=html
 
 set backupcopy=yes
@@ -129,6 +129,10 @@ set background=dark
 colorscheme PaperColor
 set laststatus=2
 let g:airline_theme='PaperColor'
+
+"" background color erase for tmux
+set t_ut=
+
 
 "colorscheme kalisi
 "set background=dark
