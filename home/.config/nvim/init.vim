@@ -18,6 +18,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'kchmck/vim-coffee-script'
 Plug 'danro/rename.vim'
 Plug 'ethereum/vim-solidity'
+Plug 'motemen/git-vim'
+Plug 'mxw/vim-jsx'
 
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -36,9 +38,44 @@ map <C-n> :NERDTreeToggle<CR>
 
 
 " neomake
-autocmd! BufWritePost * Neomake
+"autocmd BufWritePost *.go Neomake
 let g:neomake_open_list = 2
+let g:neomake_go_gobuild_maker = {
+			\ 'exe': 'sh',
+			\ 'args': ['-c', 'go build -o ' . neomake#utils#DevNull() . ' ./\$0', '%:h'],
+			\ 'errorformat':
+			\ '%W%f:%l: warning: %m,' .
+			\ '%E%f:%l:%c:%m,' .
+			\ '%E%f:%l:%m,' .
+			\ '%C%\s%\+%m,' .
+			\ '%-G#%.%#'
+			\ }
 
+
+function! NeomakeESlintChecker()
+  let l:npm_bin = ''
+  let l:eslint = 'eslint'
+
+  if executable('npm-which')
+    let l:eslint = split(system('npm-which eslint'))[0]
+    let b:neomake_javascript_eslint_exe = l:eslint
+    let b:neomake_open_list = 2
+    return 0
+  endif
+
+  if executable('npm')
+    let l:npm_bin = split(system('npm bin'), '\n')[0]
+  endif
+
+  if strlen(l:npm_bin) && executable(l:npm_bin . '/eslint')
+    let l:eslint = l:npm_bin . '/eslint'
+  endif
+
+  let b:neomake_javascript_eslint_exe = l:eslint
+endfunction
+
+autocmd FileType javascript :call NeomakeESlintChecker()
+autocmd! BufWritePost,BufReadPost * Neomake
 
 " md == markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -87,7 +124,7 @@ set noswapfile
 "set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 "endif
 "
-au BufNewFile,BufRead *.es6,*.jsx set filetype=javascript
+au BufNewFile,BufRead *.es6 set filetype=javascript
 au BufNewFile,BufRead *.tmpl set filetype=html
 
 set backupcopy=yes
@@ -97,3 +134,5 @@ set background=dark
 colorscheme PaperColor
 set laststatus=2
 let g:airline_theme='PaperColor'
+
+set mouse-=a
