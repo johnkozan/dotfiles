@@ -59,6 +59,7 @@ function! NeomakeESlintChecker()
   if executable('npm-which')
     let l:eslint = split(system('npm-which eslint'))[0]
     let b:neomake_javascript_eslint_exe = l:eslint
+    let b:neomake_jsx_eslint_exe = l:eslint
     let b:neomake_open_list = 2
     return 0
   endif
@@ -70,8 +71,6 @@ function! NeomakeESlintChecker()
   if strlen(l:npm_bin) && executable(l:npm_bin . '/eslint')
     let l:eslint = l:npm_bin . '/eslint'
   endif
-
-  let b:neomake_javascript_eslint_exe = l:eslint
 endfunction
 
 autocmd FileType javascript :call NeomakeESlintChecker()
