@@ -20,6 +20,7 @@ Plug 'danro/rename.vim'
 Plug 'ethereum/vim-solidity'
 Plug 'motemen/git-vim'
 Plug 'mxw/vim-jsx'
+Plug 'airblade/vim-gitgutter'
 
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
